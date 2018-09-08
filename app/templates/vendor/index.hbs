@@ -3,15 +3,15 @@
 
     <ul>
         {{#each model.items as |item|}}
-            <li>{{item.name}} {{item.timer}}</li>
+            <li>{{item.name}} - {{item.timer}}</li>
         {{/each}}
         {{!-- <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
         <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
         <li>Add Item <button class="btn btn-primary">Set Timer</button></li> --}}
         <li>Add Item
-            <button class="btn btn-primary" {{action 'showTimer'}}>
+            {{#link-to "vendor.item.new" class="btn btn-primary"}}
                 Set Timer
-            </button>
+            {{/link-to}}
         </li>
     </ul>
 

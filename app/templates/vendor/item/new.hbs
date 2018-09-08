@@ -1,0 +1,25 @@
+<div>
+  <div class="form-group">
+    <label for="foodName">Item Name</label>
+    {{input
+      class="form-control"
+      id="foodName"
+      placeholder="Item Name"
+      value=model.name
+      aria-describedby="foodName"
+      required=true
+    }}
+  </div>
+  <div class="form-group">
+    <label for="timerDuration">Ready in? (seconds)</label>
+    {{input
+      class="form-control"
+      id="timerDuration"
+      placeholder="120s"
+      value=model.duration
+      aria-describedby="timerDuration"
+      required=true
+    }}
+  </div>
+  <button class="btn btn-primary" {{action 'saveItem' model}}>Start Timer</button>
+</div>

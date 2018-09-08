@@ -8,7 +8,11 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('login');
-  this.route('vendor', function() {});
+  this.route('vendor', function() {
+    this.route('item', function() {
+      this.route('new');
+    });
+  });
   this.route('non-vendor', function() {});
 });
 
