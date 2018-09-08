@@ -2,12 +2,18 @@
     <h1>Your Items</h1>
 
     <ul>
+        {{#each items as |item|}}
+            <li>{{item.name}} {{item.timer}}</li>
+        {{/each}}
+        {{!-- <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
         <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
-        <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
-        <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
-        <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
+        <li>Add Item <button class="btn btn-primary">Set Timer</button></li> --}}
+        <li>Add Item
+            <button class="btn btn-primary" {{action 'showTimer'}}>
+                Set Timer
+            </button>
+        </li>
     </ul>
-
 
     {{#link-to "login" class="btn btn-primary"}}Back{{/link-to}}
 </div>
