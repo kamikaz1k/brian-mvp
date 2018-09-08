@@ -12,7 +12,7 @@ export default Route.extend({
                 {name: "Lassi", timer: 987}
             ]
         }
-    }
+    },
 
     actions: {
         showTimer() {

@@ -6,7 +6,7 @@
         <li>Vendor <button class="btn btn-primary">Open/Close</button></li>
         <li>Vendor <button class="btn btn-primary">Open/Close</button></li>
         <li>Vendor <button class="btn btn-primary">Open/Close</button></li> --}}
-        {{#each vendors as |vendor|}}
+        {{#each model.vendors as |vendor|}}
             <li>{{vendor.name}} {{vendor.status}}</li>
         {{/each}}
     </ul>

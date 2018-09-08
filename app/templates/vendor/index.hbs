@@ -2,7 +2,7 @@
     <h1>Your Items</h1>
 
     <ul>
-        {{#each items as |item|}}
+        {{#each model.items as |item|}}
             <li>{{item.name}} {{item.timer}}</li>
         {{/each}}
         {{!-- <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
