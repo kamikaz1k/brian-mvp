@@ -1,16 +1,14 @@
 <div class="container text-center">
     <h1>Vendor List</h1>
 
-    <ul>
-        {{!-- <li>Vendor <button class="btn btn-primary">Open/Close</button></li>
-        <li>Vendor <button class="btn btn-primary">Open/Close</button></li>
-        <li>Vendor <button class="btn btn-primary">Open/Close</button></li>
-        <li>Vendor <button class="btn btn-primary">Open/Close</button></li> --}}
-        {{#each model.vendors as |vendor|}}
-            <li>{{vendor.name}} [{{vendor.status}}]</li>
-        {{/each}}
-    </ul>
+    {{#each model.vendors as |vendor|}}
+        <div class="row mb-3">
+            <div class="col">{{vendor.name}}</div>
+            <div class="col">[{{vendor.status}}]</div>
+        </div>
+    {{/each}}
 
-
-    {{#link-to "login" class="btn btn-primary"}}Back{{/link-to}}
+    <div class="text-right">
+        {{#link-to "login" class="btn btn-primary"}}Back{{/link-to}}
+    </div>
 </div>

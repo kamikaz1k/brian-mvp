@@ -17,7 +17,7 @@ export default Route.extend({
         name: item.name,
         timerStartedAt: startedAt.toISOString(),
         timerStopAt: startedAt.add(item.duration, 'seconds').toISOString()
-      });
+      }).save();
       this.transitionTo('vendor.index');
     }
   }
