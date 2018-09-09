@@ -1,19 +1,30 @@
-<div class="container">
+<div class="container text-center">
     <h1>Your Items</h1>
 
-    <ul>
-        {{#each model.items as |item|}}
-            <li>{{item.name}} {{simple-countdown endDateTimeString=item.timerStopAt}}</li>
-        {{/each}}
-        {{!-- <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
-        <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
-        <li>Add Item <button class="btn btn-primary">Set Timer</button></li> --}}
-        <li>Add Item
+    {{#each model.items as |item|}}
+        <div class="row mb-3">
+            <div class="col">{{item.name}}</div>
+            <div class="col">{{simple-countdown endDateTimeString=item.timerStopAt}}</div>
+            <div class="col">
+                {{#link-to "vendor.item.new" class="btn"}}
+                    Set Timer
+                {{/link-to}}
+            </div>
+        </div>
+    {{/each}}
+
+    <div class="row mb-3">
+        <div class="col">
+            Add Item
+        </div>
+        <div class="col">
             {{#link-to "vendor.item.new" class="btn btn-primary"}}
                 Set Timer
             {{/link-to}}
-        </li>
-    </ul>
+        </div>
+    </div>
 
-    {{#link-to "login" class="btn btn-primary"}}Back{{/link-to}}
+    <div class="text-right">
+        {{#link-to "login" class="btn btn-primary"}}Back{{/link-to}}
+    </div>
 </div>
