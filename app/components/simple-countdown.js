@@ -11,7 +11,6 @@ export default Component.extend({
 
   number: Ember.computed('endDateTime', 'checkedAt', function() {
     let diff = this.get('endDateTime').diff(this.get('checkedAt'))
-    // (this.get('endDateTime') - this.get('checkedAt'))
     return Math.max(Math.round(diff / 1000), 0);
   }),
 

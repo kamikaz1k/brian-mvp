@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
     <h1>Vendor List</h1>
 
     <ul>
@@ -7,7 +7,7 @@
         <li>Vendor <button class="btn btn-primary">Open/Close</button></li>
         <li>Vendor <button class="btn btn-primary">Open/Close</button></li> --}}
         {{#each model.vendors as |vendor|}}
-            <li>{{vendor.name}} {{vendor.status}}</li>
+            <li>{{vendor.name}} [{{vendor.status}}]</li>
         {{/each}}
     </ul>
 
