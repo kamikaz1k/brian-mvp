@@ -11,13 +11,7 @@ from app.resources.vendor_item.resource import (
     VendorItemsResource
 )
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@localhost/brian_mvp?charset=utf8"
-
-db.init_app(app)
-
-api = Api(app)
+api = Api()
 
 class HelloWorld(Resource):
     def get(self):
@@ -41,5 +35,16 @@ api.add_resource(
     '/vendor-items'
 )
 
+def create_app():
+
+    app = Flask('brian_mvp')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@localhost/brian_mvp?charset=utf8"
+
+    db.init_app(app)
+    api.init_app(app)
+
+    return app
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    create_app().run(debug=True)

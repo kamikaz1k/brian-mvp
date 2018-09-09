@@ -25,3 +25,4 @@
 # python stuff
 *.pyc
 brian-mvp-backend/env/
+.DS_Store
