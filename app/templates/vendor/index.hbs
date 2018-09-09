@@ -3,7 +3,7 @@
 
     <ul>
         {{#each model.items as |item|}}
-            <li>{{item.name}} - {{item.timer}}</li>
+            <li>{{item.name}} {{simple-countdown endDateTimeString=item.timerStopAt}}</li>
         {{/each}}
         {{!-- <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
         <li>Add Item <button class="btn btn-primary">Set Timer</button></li>
