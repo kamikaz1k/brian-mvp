@@ -4,6 +4,8 @@ from flask_restful import Resource, abort
 from app.database import db
 
 from app.models.vendor import Vendor as VendorModel
+from app.models.vendor_item import VendorItem as VendorItemModel
+from app.resources.vendor_item.resource import serializer_vendor_item
 
 
 def serializer_vendor(vendor):
@@ -26,9 +28,22 @@ class VendorResource(Resource):
         if not vendor:
             abort(404, message="Vendor {} doesn't exist".format(vendor_id))
 
-        return {
+        response = {
             'data': serializer_vendor(vendor)
         }
+
+        include = request.args.get('include')
+        if include is not None:
+            vendor_items = VendorItemModel.query.filter(
+                VendorItemModel.vendor_id == vendor_id
+            ).all()
+
+            response['included'] = [
+                serializer_vendor_item(item)
+                for item in vendor_items
+            ]
+
+        return response
 
 
 class VendorsResource(Resource):

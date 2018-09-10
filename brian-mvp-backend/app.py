@@ -20,7 +20,7 @@ class HelloWorld(Resource):
 api.add_resource(HelloWorld, '/')
 api.add_resource(
     VendorResource,
-    '/vendor/<int:vendor_id>'
+    '/vendors/<int:vendor_id>'
 )
 api.add_resource(
     VendorsResource,
@@ -28,7 +28,7 @@ api.add_resource(
 )
 api.add_resource(
     VendorItemResource,
-    '/vendor-item/<int:vendor_item_id>'
+    '/vendor-items/<int:vendor_item_id>'
 )
 api.add_resource(
     VendorItemsResource,

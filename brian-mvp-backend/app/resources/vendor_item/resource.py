@@ -14,8 +14,8 @@ def serializer_vendor_item(vendor_item):
         'attributes': {
             'vendor_id': vendor_item.vendor_id,
             'name': vendor_item.name,
-            'timer_started_at': vendor_item.timer_started_at.isoformat(),
-            'timer_stop_at': vendor_item.timer_stop_at.isoformat()
+            'timer_started_at': vendor_item.timer_started_at.isoformat() + "Z",
+            'timer_stop_at': vendor_item.timer_stop_at.isoformat() + "Z"
         }
     }
 
