@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask, g, render_template, Response
 from flask_restful import Resource, Api
 
 from app.database import db
@@ -13,11 +13,14 @@ from app.resources.vendor_item.resource import (
 
 api = Api()
 
-class HelloWorld(Resource):
+class LandingPage(Resource):
     def get(self):
-        return {'hello': 'world'}
+        return Response(
+            response=render_template('index.html'),
+            mimetype='text/html'
+        )
 
-api.add_resource(HelloWorld, '/')
+api.add_resource(LandingPage, '/')
 api.add_resource(
     VendorResource,
     '/vendors/<int:vendor_id>'
@@ -36,8 +39,12 @@ api.add_resource(
 )
 
 def create_app():
-
-    app = Flask('brian_mvp')
+    import os
+    app = Flask(
+        'brian_mvp',
+        template_folder=os.path.abspath('./static'),
+        static_folder=os.path.abspath('./static/assets')
+    )
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@localhost/brian_mvp?charset=utf8"
 
