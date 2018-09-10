@@ -6,4 +6,6 @@ export default DS.Model.extend({
 
   status: DS.attr(),
 
+  vendorItems: DS.hasMany('vendor-item')
+
 });
