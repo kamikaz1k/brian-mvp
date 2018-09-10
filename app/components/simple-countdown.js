@@ -1,26 +1,24 @@
 import Component from '@ember/component';
-import { inject } from '@ember/service';
+import { computed } from '@ember/object';
+import { equal } from '@ember/object/computed';
 import moment from 'moment';
-
-
-import Ember from 'ember';
 
 export default Component.extend({
 
   tagName: '',
 
-  number: Ember.computed('endDateTime', 'checkedAt', function() {
+  number: computed('endDateTime', 'checkedAt', function() {
     let diff = this.get('endDateTime').diff(this.get('checkedAt'))
     return Math.max(Math.round(diff / 1000), 0);
   }),
 
-  isZero: Ember.computed.equal('number', 0),
+  isZero: equal('number', 0),
 
   checkedAt: moment(),
 
   endDateTimeString: null,
 
-  endDateTime: Ember.computed('endDateTimeString', function() {
+  endDateTime: computed('endDateTimeString', function() {
     return moment(this.get('endDateTimeString'));
   }),
 
