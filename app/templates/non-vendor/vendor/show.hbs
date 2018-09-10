@@ -1,4 +1,18 @@
-<div class="container">
-  {{model.vendor.name}}
-  {{model.vendor.status}}
+<div class="container text-center">
+    <h1>{{model.vendor.name}} Items</h1>
+    <h2>It is currently: {{model.vendor.status}}</h2>
+
+    {{#each model.vendorItems as |item|}}
+        <div class="row mb-3">
+            <div class="col">{{item.name}}</div>
+            <div class="col">{{simple-countdown endDateTimeString=item.timerStopAt}}</div>
+            <div class="col">
+                <button class="btn btn-default">Subscribe</button>
+            </div>
+        </div>
+    {{/each}}
+
+    <div class="text-right">
+        {{#link-to "non-vendor.index" class="btn btn-primary"}}Back{{/link-to}}
+    </div>
 </div>
