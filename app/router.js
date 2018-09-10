@@ -13,7 +13,11 @@ Router.map(function() {
       this.route('new');
     });
   });
-  this.route('non-vendor', function() {});
+  this.route('non-vendor', function() {
+    this.route('vendor', function() {
+      this.route('show', { path: '/:vendor_id' });
+    });
+  });
 });
 
 export default Router;

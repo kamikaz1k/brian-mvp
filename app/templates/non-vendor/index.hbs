@@ -4,7 +4,11 @@
     {{#each model.vendors as |vendor|}}
         <div class="row mb-3">
             <div class="col">{{vendor.name}}</div>
-            <div class="col">[{{vendor.status}}]</div>
+            <div class="col">
+                {{#link-to "non-vendor.vendor.show" vendor.id class="btn btn-primary"}}
+                    {{vendor.status}}
+                {{/link-to}}
+            </div>
         </div>
     {{/each}}
 
