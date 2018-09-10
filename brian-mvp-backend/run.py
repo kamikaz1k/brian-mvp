@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, g, render_template, Response
 from flask_restful import Resource, Api
 
@@ -38,15 +40,21 @@ api.add_resource(
     '/vendor-items'
 )
 
+def get_db_url():
+    LOCAL_DEV_URI = "mysql+mysqldb://root@localhost/brian_mvp?charset=utf8"
+    return os.environ.get(
+        'CLEARDB_DATABASE_URL',
+        LOCAL_DEV_URI
+    )
+
 def create_app():
-    import os
     app = Flask(
         'brian_mvp',
         template_folder=os.path.abspath('./static'),
         static_folder=os.path.abspath('./static/assets')
     )
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqldb://root@localhost/brian_mvp?charset=utf8"
+    app.config['SQLALCHEMY_DATABASE_URI'] = get_db_url()
 
     db.init_app(app)
     api.init_app(app)
