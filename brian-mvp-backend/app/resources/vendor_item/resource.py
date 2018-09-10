@@ -37,7 +37,7 @@ class VendorItemResource(Resource):
 class VendorItemsResource(Resource):
 
     def get(self):
-        vendor_id = DEFAULT_VENDOR_ID
+        vendor_id = request.args.get('filter[vendorId]')
         vendor_items = VendorItemModel.query.filter(
             VendorItemModel.vendor_id == vendor_id
         ).all()
