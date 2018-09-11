@@ -1,3 +1,5 @@
+from dateutil import parser
+
 from flask import request
 from flask_restful import Resource, abort
 
@@ -56,8 +58,8 @@ class VendorItemsResource(Resource):
             id=params.get('id'),
             vendor_id=vendor_id,
             name=params.get('name'),
-            timer_started_at=params.get('timer_started_at'),
-            timer_stop_at=params.get('timer_stop_at'),
+            timer_started_at=parser.parse(params.get('timer_started_at')),
+            timer_stop_at=parser.parse(params.get('timer_stop_at')),
         )
 
         db.session.add(vendor_item)
